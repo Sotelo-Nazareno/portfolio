@@ -1,0 +1,36 @@
+html{
+  background-color: black;
+  /* CORREGIDO: min-height en vez de height fijo en 100vh. Con height fijo,
+     si el contenido es más alto que la pantalla (que pasa seguro, porque
+     el <main> mide 600px+ y encima está el header y el footer), el layout
+     queda "apretado" contra ese límite en vez de poder crecer. */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+body{
+  padding-left: 50px;
+  padding-right: 50px;
+  /* CORREGIDO: este era el bug más grave de responsividad del sitio.
+     width: 1200px fijo hacía que en cualquier pantalla más chica (celular,
+     tablet, notebook con zoom) apareciera scroll horizontal y el contenido
+     se viera cortado. Se cambia a max-width, que limita el ancho en
+     pantallas grandes pero permite achicarse en pantallas chicas. */
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* AGREGADO: en mobile no tiene sentido mantener 50px de padding a cada
+   lado (se come casi toda la pantalla), así que lo reducimos. */
+@media (max-width: 600px) {
+  body{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

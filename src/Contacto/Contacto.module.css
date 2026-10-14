@@ -1,0 +1,65 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.enlace {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgb(187, 12, 85);
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid rgb(187, 12, 85);
+    border-radius: 12px;
+    padding: 10px 16px;
+}
+
+.icono {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    fill: currentColor;
+}
+
+.githubIcon {
+    color: rgb(187, 12, 85);
+}
+
+.emailIcon {
+    color: rgb(187, 12, 85);
+}
+
+.enlace:hover{
+    transform: scale(1.03);
+    border-color:rgb(187, 12, 85);
+    box-shadow: 0 0 14px rgb(187, 12, 85);
+}
+
+/* AGREGADO: media query para pantallas chicas (celulares). El resto del
+   proyecto no tenía ninguna, así que agrego una acá también como ejemplo
+   a seguir en los demás componentes. */
+@media (max-width: 600px) {
+    .enlaces {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .enlace {
+        justify-content: center;
+    }
+}

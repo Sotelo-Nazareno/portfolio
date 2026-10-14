@@ -1,0 +1,71 @@
+/* CORREGIDO: este archivo era navbar.css (CSS global) con selectores sueltos
+   nav, div, a. Al ser global, esas reglas se aplicaban a TODOS los <div> y
+   <a> de la página, no solo a los del navbar (por ejemplo, pisaban estilos
+   de los links de las tarjetas de proyecto). Se convirtió en
+   navbar.module.css con clases propias para que quede aislado. */
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(109, 6, 49);
+    /* CORREGIDO/AJUSTADO: bajé el padding vertical de 50px a 20px. Antes
+       el navbar solo se veía grande una vez, al tope de la página; ahora
+       que queda pegado arriba todo el tiempo (sticky), 50px de padding se
+       comían espacio de pantalla de forma permanente mientras scrolleabas. */
+    padding: 20px 20px;
+    width: 100%;
+    height: 10px;
+    /* AGREGADO (a pedido): position: fixed hace que el navbar se quede
+       pegado arriba de la pantalla mientras scrolleás, sin importar dónde
+       esté en el DOM. Acompaña todo el tiempo hasta el final de la página. */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* AGREGADO: fondo negro (igual al de la página) para que el contenido
+       que pasa por detrás no se transparente a través del navbar. */
+    background-color: black;
+    /* AGREGADO: z-index para que el navbar quede siempre por encima del
+       resto del contenido al superponerse (sin esto, en algunos casos el
+       contenido de abajo podría dibujarse por encima). */
+    z-index: 10;
+    transition: top 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    margin: 0 auto;
+}
+
+.nav.scrolled {
+    box-shadow: 0 10px 30px rgba(187, 12, 85, 0.15);
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.enlace {
+    color: rgb(187, 12, 85);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid rgb(187, 12, 85);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.enlace:hover{
+    transform: scale(1.03);
+    border-color: rgb(187, 12, 85);
+    box-shadow: 0 0 14px rgb(187, 12, 85);
+}
+
+/* AGREGADO: en mobile bajamos el padding para que no se coma toda la pantalla */
+@media (max-width: 600px) {
+    .nav {
+        padding: 20px 10px;
+    }
+}

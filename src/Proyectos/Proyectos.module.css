@@ -1,0 +1,30 @@
+/* AGREGADO: este archivo no existía. La sección de Proyectos no tenía
+   ningún contenedor con display:flex propio, así que las tarjetas
+   (TarjetaProyecto) se apilaban en columna por defecto en vez de quedar
+   una al lado de la otra. */
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.titulo{
+    color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10px;
+}
+
+.grilla{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+}
+
+/* En mobile, si no entran dos tarjetas de 300px de ancho en la fila,
+   flex-wrap ya las baja de línea solo. No hace falta media query acá. */

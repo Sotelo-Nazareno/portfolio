@@ -1,0 +1,120 @@
+/* ============================================
+   CONTENEDOR PRINCIPAL DE LA BANDA
+   ============================================ */
+.bandContainer {
+    width: 100%;
+    overflow: hidden;
+    background-color: black;
+    padding: 40px 0;
+    margin: 10px 0;
+}
+
+/* ============================================
+   BANDA CON LA ANIMACIÓN INFINITA
+   ============================================ */
+.band {
+    display: flex;
+    gap: 30px;
+    animation: scroll 30s linear infinite;
+    /* Se define un ancho lo suficientemente grande para que quepa todo
+       sin que se repita visualmente antes de que comience la animación */
+    width: fit-content;
+}
+
+/* ANIMACIÓN: translate mueve los elementos de derecha a izquierda.
+   - translateX(0): posición inicial (desde la derecha, fuera de pantalla)
+   - translateX(-100%): al 100% de la animación, se ha movido por completo
+                        hacia la izquierda (sale de la pantalla)
+
+   Como el array se duplicó, cuando llega a -100%, automáticamente la segunda
+   copia comienza a entrar por la derecha, creando la ilusión de infinito.
+
+   linear: velocidad constante (no aceleración ni desaceleración)
+   infinite: se repite para siempre
+   30s: tarda 30 segundos en completar un ciclo (ajustable)
+*/
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ============================================
+   TARJETA INDIVIDUAL DE SKILL
+   ============================================ */
+.skillCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    min-width: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover: la tarjeta crece y brilla cuando pasas el mouse */
+.skillCard:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgb(187, 12, 85);
+}
+
+/* ============================================
+   LOGO DEL SKILL
+   ============================================ */
+.logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+}
+
+/* Al hacer hover en la tarjeta, el logo brilla más */
+.skillCard:hover .logo {
+    filter: drop-shadow(0 0 8px rgb(187, 12, 85));
+}
+
+/* ============================================
+   NOMBRE DEL SKILL
+   ============================================ */
+.skillName {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(187, 12, 85);
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* ============================================
+   RESPONSIVO PARA MOBILE
+   ============================================ */
+@media (max-width: 600px) {
+    .bandContainer {
+        padding: 25px 0;
+        margin: 25px 0;
+    }
+
+    .band {
+        gap: 15px;
+    }
+
+    .skillCard {
+        min-width: 80px;
+        padding: 15px;
+    }
+
+    .logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .skillName {
+        font-size: 12px;
+    }
+}

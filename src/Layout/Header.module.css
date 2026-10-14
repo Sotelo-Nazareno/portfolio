@@ -1,0 +1,78 @@
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* CORREGIDO: antes era "h2, p" (selector suelto). En un archivo .module.css
+   los selectores de etiqueta (no clase) NO quedan aislados por React:
+   esto le pegaba estilo a CUALQUIER h2/p de toda la app, no solo a los de
+   este componente. Se lo scopea colgándolo de .descripcion. */
+.descripcion h2,
+.descripcion p{
+    color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 600px;
+}
+
+.contenedor img{
+    height: 400px;
+    width: 400px;
+    border: 2px solid rgb(109, 6, 49);
+    border-radius: 20px;
+}
+
+.descripcion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 500px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+}
+
+.descripcion h2,
+.descripcion p{
+    color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 600px;
+}
+
+/* AGREGADO: responsive. Sin esto la foto de 500x500px no entraba en
+   pantallas de celular y generaba scroll horizontal en todo el sitio. */
+@media (max-width: 900px) {
+    .contenedor {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contenedor img{
+        height: 300px;
+        width: 300px;
+    }
+
+    .descripcion {
+        max-width: 100%;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contenedor img{
+        height: 250px;
+        width: 250px;
+    }
+}

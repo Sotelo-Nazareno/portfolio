@@ -1,0 +1,19 @@
+
+.footer{
+    display: flex;
+    /* CORREGIDO: la regla "width" estaba declarada dos veces (1200px y
+    1300px); la segunda pisaba a la primera, así que la primera línea
+    era código muerto. Además, un width fijo rompía en pantallas chicas.
+    Se deja un único width en 100% para que sea responsive. */
+    width: 100%;
+    background-color: rgb(187, 12, 85);
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.footer p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+}
