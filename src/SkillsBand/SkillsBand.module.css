@@ -21,7 +21,7 @@
     width: fit-content;
 }
 
-/* ANIMACIÓN: translate mueve los elementos de derecha a izquierda.
+/*  ANIMACIÓN: translate mueve los elementos de derecha a izquierda.
    - translateX(0): posición inicial (desde la derecha, fuera de pantalla)
    - translateX(-100%): al 100% de la animación, se ha movido por completo
                         hacia la izquierda (sale de la pantalla)
