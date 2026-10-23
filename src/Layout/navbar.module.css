@@ -47,14 +47,12 @@
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    margin-left: 800px;
 }
 
 .idiomas {
     display: flex;
     gap: 5px;
     align-items: center;
-    margin-left: auto;
 }
 
 .botonIdioma {
