@@ -8,14 +8,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     border-bottom: 1px solid rgb(109, 6, 49);
     /* CORREGIDO/AJUSTADO: bajé el padding vertical de 50px a 20px. Antes
        el navbar solo se veía grande una vez, al tope de la página; ahora
        que queda pegado arriba todo el tiempo (sticky), 50px de padding se
        comían espacio de pantalla de forma permanente mientras scrolleabas. */
-    padding: 20px 20px;
+    padding: 8px 20px;
     width: 100%;
-    height: 10px;
+    min-height: 58px;
     /* AGREGADO (a pedido): position: fixed hace que el navbar se quede
        pegado arriba de la pantalla mientras scrolleás, sin importar dónde
        esté en el DOM. Acompaña todo el tiempo hasta el final de la página. */
@@ -78,6 +79,7 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     text-decoration: none;
+    white-space: nowrap;
     border: 2px solid rgb(187, 12, 85);
     border-radius: 12px;
     padding: 10px;
@@ -90,9 +92,34 @@
     color: white;
 }
 
-/* AGREGADO: en mobile bajamos el padding para que no se coma toda la pantalla */
 @media (max-width: 600px) {
     .nav {
-        padding: 20px 10px;
+        padding: 8px;
+    }
+
+    .contenedor {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .contenedor::-webkit-scrollbar {
+        display: none;
+    }
+
+    .enlace {
+        padding: 7px 6px;
+        font-size: 12px;
+    }
+
+    .idiomas {
+        flex-shrink: 0;
+    }
+
+    .botonIdioma {
+        padding: 7px;
     }
 }
