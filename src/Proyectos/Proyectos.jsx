@@ -7,10 +7,12 @@ import { TarjetaProyecto } from '../TarjetaProyecto/TarjetaProyecto'
 // (columna) en vez de ponerlas en fila. Este componente las envuelve en
 // un contenedor con display:flex en fila, además de agregar un título
 // "Proyectos" para que la sección se distinga claramente de Contacto.
-export function Proyectos({ proyectos }) {
+export function Proyectos({ proyectos, language }) {
+    const isEnglish = language === 'en'
+
     return (
         <section id="proyectos" className={styles.contenedor}>
-            <h2 className={styles.titulo}>Proyectos</h2>
+            <h2 className={styles.titulo}>{isEnglish ? 'Projects' : 'Proyectos'}</h2>
             <div className={styles.grilla}>
                 {proyectos.map((proyecto) => (
                     <TarjetaProyecto
@@ -19,6 +21,8 @@ export function Proyectos({ proyectos }) {
                         path_foto={proyecto.path_foto}
                         nombre={proyecto.nombre}
                         descripcion={proyecto.descripcion}
+                        descripcionEn={proyecto.descripcionEn}
+                        language={language}
                     />
                 ))}
             </div>

@@ -45,6 +45,33 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    width: 100%;
+}
+
+.idiomas {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-left: 100px;
+
+}
+
+.botonIdioma {
+    color: rgb(187, 12, 85);
+    background: transparent;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border: 2px solid rgb(187, 12, 85);
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.botonIdioma:hover,
+.idiomaActivo {
+    color: white;
+    background-color: rgb(187, 12, 85);
+    box-shadow: 0 0 14px rgb(187, 12, 85);
 }
 
 .enlace {
@@ -61,6 +88,7 @@
     transform: scale(1.03);
     border-color: rgb(187, 12, 85);
     box-shadow: 0 0 14px rgb(187, 12, 85);
+    color: white;
 }
 
 /* AGREGADO: en mobile bajamos el padding para que no se coma toda la pantalla */

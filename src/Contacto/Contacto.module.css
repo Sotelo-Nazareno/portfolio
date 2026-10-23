@@ -48,6 +48,7 @@
     transform: scale(1.03);
     border-color:rgb(187, 12, 85);
     box-shadow: 0 0 14px rgb(187, 12, 85);
+    color: white;
 }
 
 /* AGREGADO: media query para pantallas chicas (celulares). El resto del

@@ -7,11 +7,17 @@ import styles from './Contacto.module.css'
 // "github-icon" y "social-icon" que ya estaban en public/icons.svg
 // pero no se usaban en ningún componente). Ya está cargada con tus
 // datos reales.
-export function Contacto() {
+export function Contacto({ language }) {
+    const isEnglish = language === 'en'
+
     return (
         <section id="contacto" className={styles.contenedor}>
-            <h2>Contacto</h2>
-            <p>¿Querés hablar conmigo? Podés encontrarme acá:</p>
+            <h2>{isEnglish ? 'Contact' : 'Contacto'}</h2>
+            <p>
+                {isEnglish
+                    ? 'Would you like to get in touch? You can find me here:'
+                    : '¿Querés hablar conmigo? Podés encontrarme acá:'}
+            </p>
             <div className={styles.enlaces}>
                 <a
                     className={styles.enlace}

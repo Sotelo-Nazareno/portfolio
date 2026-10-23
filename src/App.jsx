@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Layout } from './Layout/Layout'
 import { Proyectos } from './Proyectos/Proyectos'
 import { Contacto } from './Contacto/Contacto'
@@ -84,31 +85,41 @@ const proyectos = [
     path_foto: todoListImg,
     // TODO (Nazareno): reemplazar por una descripción real del proyecto.
     descripcion: 'Aplicación para crear, completar y eliminar tareas pendientes.',
+    descripcionEn: 'An app to create, complete, and delete pending tasks.',
   },
   {
     nombre: 'etch-a-sketch',
     link: 'https://etch-a-sketch-naza.netlify.app',
     path_foto: pizarronImg,
     descripcion: 'Pizarra interactiva para dibujar con el mouse, hecha con JavaScript puro.',
+    descripcionEn: 'An interactive drawing board made with vanilla JavaScript.',
   },
   {
     nombre: 'Pygame-Naruto-Shippuden',
     link: 'https://github.com/Sotelo-Nazareno/Pygame-Naruto-Shippuden',
     path_foto: narutoImg,
     descripcion: 'Juego de acción basado en la franquicia Naruto, desarrollado con Pygame.',
+    descripcionEn: 'An action game based on the Naruto franchise, developed with Pygame.',
   },
   {
-    nombre: '',
+    nombre: 'Próximamente',
     link: '#',
     path_foto: proximamenteImg,
     descripcion: 'Proximamente mas proyectos...🚀',
+    descripcionEn: 'More projects coming soon...🚀',
   },
 ]
 
 function App() {
+  const [language, setLanguage] = useState('es')
+
+  useEffect(() => {
+    document.documentElement.lang = language
+  }, [language])
+
   return (
     <div>
-      <Layout>
+      <Layout language={language} onLanguageChange={setLanguage}>
         {/* AGREGADO: banda de skills (lenguajes de programación). Se muestra
             como un carrusel infinito que va de izquierda a derecha. Se ubica
             arriba de la sección de Proyectos. */}
@@ -117,11 +128,11 @@ function App() {
         {/* AGREGADO: componente Proyectos, que pone las tarjetas en fila
             horizontal (una al lado de la otra) y trae su propio título,
             para que se note como sección separada de Contacto. */}
-        <Proyectos proyectos={proyectos} />
+        <Proyectos proyectos={proyectos} language={language} />
 
         {/* AGREGADO: sección de contacto. El navbar ya linkeaba a "#contacto"
             pero esa sección no existía en ningún lado del proyecto. */}
-        <Contacto/>
+        <Contacto language={language} />
       </Layout>
     </div>
   )

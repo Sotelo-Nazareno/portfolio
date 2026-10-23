@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react'
 import styles from './navbar.module.css'
 
-export function Navbar(){
+export function Navbar({ language, onLanguageChange }){
     const [scrolled, setScrolled] = useState(false)
+    const isEnglish = language === 'en'
 
     useEffect(() => {
         const onScroll = () => {
@@ -28,16 +29,34 @@ export function Navbar(){
     return(
         <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
             <div className={styles.contenedor}>
-                <Enlace link='#inicio' text='Inicio' onClick={handleInicioClick} />
-                <Enlace link='#proyectos' text='Proyectos'/>
-                <Enlace link='#contacto' text='Contacto'/>
+                <Enlace link='#inicio' text={isEnglish ? 'Home' : 'Inicio'} onClick={handleInicioClick} />
+                <Enlace link='#proyectos' text={isEnglish ? 'Projects' : 'Proyectos'} />
+                <Enlace link='#contacto' text={isEnglish ? 'Contact' : 'Contacto'} />
+                <div className={styles.idiomas} aria-label={isEnglish ? 'Select language' : 'Seleccionar idioma'}>
+                    <button
+                        type="button"
+                        className={`${styles.botonIdioma} ${language === 'en' ? styles.idiomaActivo : ''}`}
+                        aria-pressed={language === 'en'}
+                        onClick={() => onLanguageChange('en')}
+                    >
+                        EN
+                    </button>
+                    <button
+                        type="button"
+                        className={`${styles.botonIdioma} ${language === 'es' ? styles.idiomaActivo : ''}`}
+                        aria-pressed={language === 'es'}
+                        onClick={() => onLanguageChange('es')}
+                    >
+                        ES
+                    </button>
+                </div>
             </div>
         </nav>
     )
 }
 
-const Enlace = ({ link, text, onClick }) =>{
+export const Enlace = ({ link, text, onClick, download }) =>{
     return(
-        <a className={styles.enlace} href={link} onClick={onClick}>{text}</a>
+        <a className={styles.enlace} href={link} onClick={onClick} download={download}>{text}</a>
     )
 }
