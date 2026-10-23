@@ -52,7 +52,7 @@
 }
 
 /* AGREGADO: media query para pantallas chicas (celulares). El resto del
-   proyecto no tenía ninguna, así que agrego una acá también como ejemplo
+proyecto no tenía ninguna, así que agrego una acá también como ejemplo
    a seguir en los demás componentes. */
 @media (max-width: 600px) {
     .enlaces {
